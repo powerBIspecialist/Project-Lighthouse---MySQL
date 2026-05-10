@@ -4,3 +4,89 @@ customers
  orders
     ↑
 products
+
+
+Database Schema
+
+This project is built using MySQL and contains a simple relational database called lighthouse_db.
+
+It includes 3 tables: customers, products, and orders.
+
+ 1. Customers Table
+customers(
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(100),
+    city VARCHAR(100)
+)
+
+Purpose:
+
+Stores information about customers
+
+ Primary Key:
+customer_id uniquely identifies each customer.
+ Example data:
+customer_id	customer_name	city
+1	Alice	London
+2	Bob	Paris
+ 2. Products Table
+products(
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100),
+    price DECIMAL(10,2)
+)
+ Purpose:
+
+Stores information about products available for purchase.
+
+ Primary Key:
+product_id uniquely identifies each product.
+ Fields:
+product_name → name of the product
+price → product price with decimal precision
+ Example data:
+product_id	product_name	price
+1	Laptop	1200.00
+2	Mouse	25.50
+
+
+ 3. Orders Table
+orders(
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    product_id INT,
+    quantity INT,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+)
+ Purpose:
+
+Stores all orders made by customers and links them to products.
+
+ Primary Key:
+order_id uniquely identifies each order.
+ Foreign Keys:
+customer_id → links to customers.customer_id
+product_id → links to products.product_id
+
+
+ Relationships Between Tables
+One customer can place multiple orders (1-to-many relationship)
+One product can appear in multiple orders (1-to-many relationship)
+
+
+ Database Structure
+customers         products
+    \               /
+     \             /
+        orders
+
+
+ Summary
+
+This is a relational database structure where:
+
+customers stores who is buying
+products stores what is being sold
+orders connects customers with products and stores purchase details
+
