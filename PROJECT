@@ -1,1 +1,32 @@
+-- Project Lighthouse
 
+-- The main ideea of the project is to create a database where we can store our tables
+-- We need to have 3 tables named customers, orders and products
+-- 
+
+-- 1. 1st on our list is to create a database in MySLQ and to be selected by us.
+
+CREATE DATABASE lighthouse_db;
+-- It tells MySQL to create a new place where tables and data will be stored.
+
+USE lighthouse_db;
+-- In MySQL, it selects the database you want to work with.
+-- After this command, all tables you create will be added to that database.
+
+-- 2 now we will create 1st table named customers
+
+CREATE TABLE customers(
+customer_id INT PRIMARY KEY,
+customer_name VARCHAR(100),
+city VARCHAR(100)
+);
+
+-- CREATE - It tells MySQL to create an object
+-- table - Specifies that the object being created is a table
+-- customers - This table will store customer information / the name of the table
+-- ( - This is where the column definitions begin
+-- customer_id - This column stores the customer ID
+-- INT - (Integer) - A numeric data type for whole numbers
+-- PRIMARY KEY - It uniquely identifies each row. it has two rules:
+                       - every value must be unique
+                       - cannot be NULL
