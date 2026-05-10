@@ -1,32 +1,93 @@
 -- Project Lighthouse
 
--- The main ideea of the project is to create a database where we can store our tables
+-- The main idea of the project is to create a database where we can store our tables
 -- We need to have 3 tables named customers, orders and products
--- 
 
--- 1. 1st on our list is to create a database in MySLQ and to be selected by us.
+-- 1.1 First, we create a database in MySQL and select it
 
 CREATE DATABASE lighthouse_db;
--- It tells MySQL to create a new place where tables and data will be stored.
+-- It tells to MySQL to create a new place where tables and data will be stored.
 
 USE lighthouse_db;
--- In MySQL, it selects the database you want to work with.
+-- It selects the database you want to work with.
 -- After this command, all tables you create will be added to that database.
 
--- 2 now we will create 1st table named customers
+-- 1.2 Create the first table: customers
 
 CREATE TABLE customers(
-customer_id INT PRIMARY KEY,
-customer_name VARCHAR(100),
-city VARCHAR(100)
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(100),
+    city VARCHAR(100)
 );
 
--- CREATE - It tells MySQL to create an object
--- table - Specifies that the object being created is a table
--- customers - This table will store customer information / the name of the table
--- ( - This is where the column definitions begin
--- customer_id - This column stores the customer ID
--- INT - (Integer) - A numeric data type for whole numbers
--- PRIMARY KEY - It uniquely identifies each row. it has two rules:
-                       - every value must be unique
-                       - cannot be NULL
+-- CREATE - creates an object in MySQL
+-- TABLE - specifies that the object is a table
+-- customers - name of the table
+-- ( - starts column definitions
+-- customer_id - column storing customer ID
+-- INT - integer (whole number)
+-- PRIMARY KEY - uniquely identifies each row (must be unique and not NULL)
+-- customer_name - column for customer name
+-- VARCHAR(100) - text up to 100 characters
+-- city - column for city
+-- ) - ends table definition
+-- ; - ends the SQL command
+
+-- 1.3 Create the second table: products
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100),
+    price DECIMAL(10,2)
+);
+
+-- product_id - unique identifier for each product
+-- INT - integer (whole number)
+-- PRIMARY KEY - uniquely identifies each product
+-- product_name - name of the product (text)
+-- VARCHAR(100) - variable-length text up to 100 characters
+-- price - stores product price
+-- DECIMAL(10,2) - precise decimal number:
+-- 10 = total digits allowed
+-- 2 = digits after decimal point (used for money)
+
+-- 1.4 Create the third table: orders
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    product_id INT,
+    quantity INT,
+
+    FOREIGN KEY (customer_id)
+    REFERENCES customers(customer_id),
+
+    FOREIGN KEY (product_id)
+    REFERENCES products(product_id)
+);
+
+-- order_id - unique identifier for each order
+-- INT - integer (whole number)
+-- PRIMARY KEY - uniquely identifies each order
+
+-- customer_id - links order to a customer
+-- INT - integer (whole number)
+
+-- product_id - links order to a product
+-- INT - integer (whole number)
+
+-- quantity - number of products ordered
+-- INT - integer (whole number)
+
+-- FOREIGN KEY (customer_id)
+-- creates a relationship between orders and customers table
+-- ensures the customer exists in the customers table
+
+-- REFERENCES customers(customer_id)
+-- connects customer_id in orders to customer_id in customers
+
+-- FOREIGN KEY (product_id)
+-- creates a relationship between orders and products table
+
+-- REFERENCES products(product_id)
+-- connects product_id in orders to product_id in products
