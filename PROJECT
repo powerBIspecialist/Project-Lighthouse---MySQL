@@ -121,3 +121,46 @@ CREATE TABLE orders (
 -- Foreign KEY → connects one table to another table
 -- Primary Key uniquely identifies records, while Foreign Key creates relationships between tables
 
+-- 1.5 now we need to insert our data in the 1st values
+
+INSERT INTO customers VALUES
+(1, 'Alice', 'London'),
+(2, 'Bob', 'Paris');
+
+-- INSERT - to add data
+-- INTO - it specifies where the data will go
+-- customers - this is the table where you inserting data
+-- VALUES - It introduces the actual rows we want to insert
+-- (1, 'Alice', 'London') first row
+-- 1 - customer_id (number, unique ID) which is replicated in orders table
+-- 'Alice' - customer_name (text/string)
+-- 'London' - city (text/string)
+
+
+
+INSERT INTO products VALUES
+(1, 'Laptop', 1200.00),
+(2, 'Mouse', 25.50);
+
+-- INSERT - to add data
+-- INTO - it specifies where the data will go
+-- products - this is the table where you inserting data
+-- VALUES - It introduces the actual rows we want to insert
+-- 1 - product_id (unique identifier for the product)
+-- 'Laptop' - product_name (text/string)
+-- 1200.00 - price (decimal value, money format)
+
+
+INSERT INTO orders VALUES
+(1, 1, 1, 1),
+(2, 2, 2, 3);
+
+-- INSERT - to add data
+-- INTO - it specifies where the data will go
+-- orders - this is the table where you inserting data
+-- 1 → order_id (unique ID for the order)
+-- 1 → customer_id (links to customers table)
+-- 1 → product_id (links to products table)
+-- 1 → quantity (how many products were ordered)
+
+-- Meaning Customer 1 (Alice) ordered 1 Laptop
