@@ -1,0 +1,46 @@
+-- 1. UPDATE (modify data)
+
+UPDATE customers
+SET city = 'Berlin'
+WHERE customer_id = 1;
+
+-- It changes existing data in a table.
+
+UPDATE customers
+SET city = 'Berlin'
+WHERE customer_id = 1;
+
+-- UPDATE - modifies existing records
+-- customers - the table name
+-- SET - defines what to change
+-- city = 'Berlin' → new value
+-- WHERE - condition (very important)
+
+-- This means change the city of customer with ID 1 to Berlin.
+-- IMPORTANT - If you don’t use WHERE, you will update ALL rows:
+
+UPDATE customers
+SET city = 'Berlin';
+
+-- This would change every customer’s city 
+
+ 2. DELETE (remove data)
+
+DELETE FROM customers
+WHERE customer_id = 2;
+
+-- DELETE FROM - removes data from a table
+-- customers - the table name
+-- WHERE - condition to choose which row to delete
+
+-- This means delete the customer with ID 2.
+-- IMPORTANT - If you skip WHERE, you delete EVERYTHING:
+-- DELETE FROM customers; -This removes all rows in the table 
+
+-- KEY DIFFERENCE
+-- Command	Meaning
+-- UPDATE	changes existing data
+-- DELETE	removes data
+-- SIMPLE IDEA:
+-- UPDATE = “edit data”
+-- DELETE = “remove data”
